@@ -1,0 +1,31 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int hour;
+    cout << "Введите час (0-23): ";
+    cin >> hour;
+
+    if (hour < 0 || hour > 23) {
+        cout << "Ошибка: некорректный час\n";
+    }
+    else if (hour >= 6 && hour <= 11) {
+        cout << "Доброе утро\n";
+    }
+    else if (hour >= 12 && hour <= 17) {
+        cout << "Добрый день\n";
+    }
+    else if (hour >= 18 && hour <= 22) {
+        cout << "Добрый вечер\n";
+    }
+    else {
+        // Сюда попадают часы 23, 0, 1, 2, 3, 4, 5
+        cout << "Доброй ночи\n";
+    }
+    return 0;
+}
