@@ -1,0 +1,22 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int year;
+    cout << "Введите год: ";
+    cin >> year;
+
+    // Условие: делится на 4 И НЕ делится на 100, ИЛИ делится на 400
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        cout << "Год високосный\n";
+    }
+    else {
+        cout << "Год не високосный\n";
+    }
+    return 0;
+}
