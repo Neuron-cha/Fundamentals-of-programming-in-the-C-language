@@ -1,0 +1,28 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    double sum;
+    cout << "Введите сумму покупки: ";
+    cin >> sum;
+
+    double finalSum = sum;
+    if (sum >= 10000) {
+        finalSum = sum * 0.85; // Скидка 15%
+    }
+    else if (sum >= 5000) {
+        finalSum = sum * 0.90; // Скидка 10%
+    }
+    else if (sum >= 1000) {
+        finalSum = sum * 0.95; // Скидка 5%
+    }
+    // Если меньше 1000, скидки нет, finalSum остается равна sum
+
+    cout << "Итоговая стоимость: " << finalSum << "\n";
+    return 0;
+}
