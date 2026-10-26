@@ -1,0 +1,31 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    double a, b, c;
+    cout << "Введите длины трех сторон: ";
+    cin >> a >> b >> c;
+
+    // Проверка, что треугольник существует
+    if (a + b > c && a + c > b && b + c > a) {
+        cout << "Треугольник существует. Тип: ";
+        if (a == b && b == c) {
+            cout << "равносторонний\n";
+        }
+        else if (a == b || b == c || a == c) {
+            cout << "равнобедренный\n";
+        }
+        else {
+            cout << "разносторонний\n";
+        }
+    }
+    else {
+        cout << "Треугольник не существует\n";
+    }
+    return 0;
+}
