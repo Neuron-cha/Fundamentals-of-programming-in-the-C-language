@@ -1,0 +1,28 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int curr, target;
+    cout << "Введите текущий этаж и нужный (1-9): ";
+    cin >> curr >> target;
+
+    // Проверка диапазона один раз через ||
+    if (curr < 1 || curr > 9 || target < 1 || target > 9) {
+        cout << "Неверный этаж\n";
+    }
+    else if (curr == target) {
+        cout << "Вы уже здесь\n";
+    }
+    else if (curr < target) {
+        cout << "Едем вверх\n";
+    }
+    else {
+        cout << "Едем вниз\n";
+    }
+    return 0;
+}
