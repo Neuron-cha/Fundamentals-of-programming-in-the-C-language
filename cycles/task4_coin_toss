@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int headsCount = 0;
+    int toss;
+
+    cout << "Tossing a coin 9 times (1 - heads, 0 - tails):\n";
+
+    for (int i = 1; i <= 9; i++) {
+        cout << "Toss " << i << ": ";
+        cin >> toss;
+        if (toss == 1) {
+            headsCount++;
+        }
+    }
+
+    cout << "\nHeads count: " << headsCount << "\n";
+
+    if (headsCount % 2 == 0) {
+        cout << "Heads count is even. Decision: POSITIVE\n";
+    }
+    else {
+        cout << "Heads count is odd. Decision: NEGATIVE\n";
+    }
+
+    return 0;
+}
