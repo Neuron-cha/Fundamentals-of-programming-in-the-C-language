@@ -1,0 +1,35 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int a, b, c, func;
+    cout << "Введите A, B, C (0 или 1): ";
+    cin >> a >> b >> c;
+    cout << "Введите номер функции (0-7): ";
+    cin >> func;
+
+    bool A = a, B = b, C = c;
+    bool result = false;
+
+    switch (func) {
+        case 0: result = false; break;                             // Ложь
+        case 1: result = A && B && C; break;                       // A И B И C
+        case 2: result = A && B && !C; break;                      // A И B И НЕ C
+        case 3: result = A && !B && C; break;                      // A И НЕ B И C
+        case 4: result = !A && B && C; break;                      // НЕ A И B И C
+        case 5: result = A || B || C; break;                       // A ИЛИ B ИЛИ C
+        case 6: result = (A != B) || (B != C); break;              // Исключающее ИЛИ (XOR)
+        case 7: result = true; break;                              // Истина
+        default: 
+            cout << "Ошибка: функция должна быть от 0 до 7\n"; 
+            return 0;
+    }
+
+    cout << "Результат функции " << func << ": " << (result ? 1 : 0) << "\n";
+    return 0;
+}
