@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    double k1, b1, k2, b2;
+    cout << "Введите k1, b1: ";
+    cin >> k1 >> b1;
+    cout << "Введите k2, b2: ";
+    cin >> k2 >> b2;
+
+    double eps = 1e-9;
+
+    if (fabs(k1 - k2) < eps) {
+        if (fabs(b1 - b2) < eps) {
+            cout << "Прямые совпадают\n";
+        } else {
+            cout << "Прямые параллельны\n";
+        }
+    } else if (fabs(k1 * k2 + 1.0) < eps) {
+        cout << "Прямые перпендикулярны\n";
+        // Точка пересечения
+        double x = (b2 - b1) / (k1 - k2);
+        double y = k1 * x + b1;
+        cout << "Точка пересечения: (" << x << ", " << y << ")\n";
+    } else {
+        cout << "Прямые пересекаются\n";
+        double x = (b2 - b1) / (k1 - k2);
+        double y = k1 * x + b1;
+        cout << "Точка пересечения: (" << x << ", " << y << ")\n";
+    }
+    return 0;
+}
