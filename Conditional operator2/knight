@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath> // Для abs()
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int x1, y1, x2, y2;
+    cout << "Введите координаты (x1 y1 x2 y2): ";
+    cin >> x1 >> y1 >> x2 >> y2;
+
+    if (x1 < 1 || x1 > 8 || y1 < 1 || y1 > 8 || x2 < 1 || x2 > 8 || y2 < 1 || y2 > 8) {
+        cout << "Координаты вне доски\n";
+        return 0;
+    }
+
+    // Конь ходит буквой "Г": разница по одной оси 2, по другой 1
+    int dx = abs(x1 - x2);
+    int dy = abs(y1 - y2);
+
+    if ((dx == 2 && dy == 1) || (dx == 1 && dy == 2)) {
+        cout << "Ход возможен\n";
+    }
+    else {
+        cout << "Ход невозможен\n";
+    }
+    return 0;
+}
