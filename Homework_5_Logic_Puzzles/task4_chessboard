@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    string cell;
+    cout << "Введите координаты клетки (например, a1): ";
+    cin >> cell;
+
+    if (cell.length() != 2 || cell[0] < 'a' || cell[0] > 'h' || cell[1] < '1' || cell[1] > '8') {
+        cout << "Ошибка: неверный формат координат\n";
+        return 0;
+    }
+
+    int col = cell[0] - 'a' + 1; // a=1, b=2...
+    int row = cell[1] - '0';     // 1-8
+
+    // Цвет (a1 - черная, если (col+row) четное)
+    string color = ((col + row) % 2 == 0) ? "черная" : "белая";
+
+    // Тип клетки
+    string type;
+    if ((col == 1 || col == 8) && (row == 1 || row == 8)) {
+        type = "угловая";
+    } else if (col == 1 || col == 8 || row == 1 || row == 8) {
+        type = "боковая";
+    } else {
+        type = "центральная";
+    }
+
+    cout << "Клетка " << cell << ": " << color << ", " << type << "\n";
+    return 0;
+}
