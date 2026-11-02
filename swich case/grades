@@ -1,0 +1,41 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+#include <cctype>
+using namespace std;
+
+enum Grade { A, B, C, D, F };
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    char ch;
+    cout << "Введите оценку (A, B, C, D, F): ";
+    cin >> ch;
+
+    Grade grade;
+    ch = toupper(ch); // Делаем букву заглавной
+
+    // Преобразуем символ в enum
+    switch (ch) {
+    case 'A': grade = A; break;
+    case 'B': grade = B; break;
+    case 'C': grade = C; break;
+    case 'D': grade = D; break;
+    case 'F': grade = F; break;
+    default:
+        cout << "Ошибка: неизвестная оценка\n";
+        return 0;
+    }
+
+    // Выводим результат через switch
+    switch (grade) {
+    case A: cout << "Отлично (5)\n"; break;
+    case B: cout << "Хорошо (4)\n"; break;
+    case C: cout << "Удовлетворительно (3)\n"; break;
+    case D: cout << "Слабо (2)\n"; break;
+    case F: cout << "Неудовлетворительно (2)\n"; break;
+    }
+    return 0;
+}
