@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int shape;
+    double x, y, cx, cy, R;
+    
+    cout << "Введите тип фигуры (1-треугольник, 2-квадрат, 3-пятиугольник): ";
+    cin >> shape;
+    cout << "Введите координаты точки (x y): ";
+    cin >> x >> y;
+    cout << "Введите центр (cx cy) и радиус описанной окружности R: ";
+    cin >> cx >> cy >> R;
+
+    double dist = sqrt(pow(x - cx, 2) + pow(y - cy, 2));
+    double apothem = 0; // Радиус вписанной окружности
+
+    if (shape == 1) { // Треугольник (правильный)
+        apothem = R / 2.0;
+    } else if (shape == 2) { // Квадрат
+        apothem = R / sqrt(2.0);
+    } else if (shape == 3) { // Пятиугольник
+        apothem = R * cos(M_PI / 5.0);
+    } else {
+        cout << "Ошибка: неизвестная фигура\n";
+        return 0;
+    }
+
+    if (dist <= apothem) {
+        cout << "Точка ВНУТРИ фигуры\n";
+    } else {
+        cout << "Точка СНАРУЖИ фигуры\n";
+    }
+    return 0;
+}
