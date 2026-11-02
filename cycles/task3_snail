@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N;
+    cout << ": ";
+    cin >> N;
+
+    int totalDistance = 0;
+    int dailyDistance = 15;
+
+    for (int i = 1; i <= N; i++) {
+        totalDistance += dailyDistance;
+        dailyDistance += 2;
+    }
+
+    cout << "In " << N << ": " << totalDistance << " cm\n";
+
+    return 0;
+}
