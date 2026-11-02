@@ -1,0 +1,39 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+#include <cctype>
+using namespace std;
+
+enum Direction { UP, DOWN, LEFT, RIGHT };
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    char ch;
+    cout << "Введите направление (w, s, a, d): ";
+    cin >> ch;
+
+    ch = tolower(ch);
+    Direction dir;
+
+    // Преобразуем символ в enum
+    switch (ch) {
+    case 'w': dir = UP; break;
+    case 's': dir = DOWN; break;
+    case 'a': dir = LEFT; break;
+    case 'd': dir = RIGHT; break;
+    default:
+        cout << "Ошибка: неизвестное направление\n";
+        return 0;
+    }
+
+    // Выводим смещение
+    switch (dir) {
+    case UP:    cout << "Смещение: (0, +1)\n"; break;
+    case DOWN:  cout << "Смещение: (0, -1)\n"; break;
+    case LEFT:  cout << "Смещение: (-1, 0)\n"; break;
+    case RIGHT: cout << "Смещение: (+1, 0)\n"; break;
+    }
+    return 0;
+}
