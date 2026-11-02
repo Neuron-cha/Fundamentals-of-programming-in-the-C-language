@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <iomanip>
+#include <sstream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int d, m, y;
+    char dot;
+    cout << "Введите дату (ДД.ММ.ГГГГ): ";
+    cin >> d >> dot >> m >> dot >> y;
+
+    // 1. Количество дней в месяце
+    int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    bool isLeap = (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
+    if (isLeap) daysInMonth[2] = 29;
+
+    if (m < 1 || m > 12 || d < 1 || d > daysInMonth[m]) {
+        cout << "Ошибка: неверная дата\n";
+        return 0;
+    }
+
+    // 2. Номер дня в году
+    int dayOfYear = d;
+    for (int i = 1; i < m; i++) {
+        dayOfYear += daysInMonth[i];
+    }
+    cout << "Дней в месяце: " << daysInMonth[m] << "\n";
+    cout << "Номер дня в году: " << dayOfYear << "\n";
+
+    // 3. Палиндром (ГГГГММДД)
+    ostringstream oss;
+    oss << setfill('0') << setw(4) << y << setw(2) << m << setw(2) << d;
+    string dateStr = oss.str();
+    string revStr = dateStr;
+    reverse(revStr.begin(), revStr.end());
+
+    if (dateStr == revStr) {
+        cout << "Дата является палиндромом (" << dateStr << ")\n";
+    } else {
+        cout << "Дата не является палиндромом\n";
+    }
+    return 0;
+}
