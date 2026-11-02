@@ -1,0 +1,33 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int hour;
+    cout << "Введите час (0-23): ";
+    cin >> hour;
+
+    // Используем fall-through (проваливание) - без break между case
+    switch (hour) {
+    case 0: case 1: case 2: case 3: case 4: case 5:
+        cout << "Ночь\n";
+        break;
+    case 6: case 7: case 8: case 9: case 10: case 11:
+        cout << "Утро\n";
+        break;
+    case 12: case 13: case 14: case 15: case 16: case 17:
+        cout << "День\n";
+        break;
+    case 18: case 19: case 20: case 21: case 22: case 23:
+        cout << "Вечер\n";
+        break;
+    default:
+        cout << "Ошибка: некорректный час\n";
+        break;
+    }
+    return 0;
+}
