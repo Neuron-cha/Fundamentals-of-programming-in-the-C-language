@@ -1,0 +1,27 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    char ch;
+    cout << "Введите строчную латинскую букву: ";
+    cin >> ch;
+
+    if (ch >= 'a' && ch <= 'z') {
+        // Сквозные case для последних букв алфавита
+        switch (ch) {
+        case 'x': cout << "a\n"; break;
+        case 'y': cout << "b\n"; break;
+        case 'z': cout << "c\n"; break;
+        default: cout << (char)(ch + 3) << "\n"; break;
+        }
+    }
+    else {
+        cout << "Ошибка: введите строчную латинскую букву\n";
+    }
+    return 0;
+}
