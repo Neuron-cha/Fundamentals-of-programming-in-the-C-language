@@ -1,0 +1,28 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+// Объявляем перечисление
+enum Season { WINTER, SPRING, SUMMER, AUTUMN };
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int input;
+    cout << "Введите число (0 - Зима, 1 - Весна, 2 - Лето, 3 - Осень): ";
+    cin >> input;
+
+    // Приводим введенное число к типу enum
+    Season season = static_cast<Season>(input);
+
+    switch (season) {
+    case WINTER: cout << "Зима, средняя температура -10°C\n"; break;
+    case SPRING: cout << "Весна, средняя температура +10°C\n"; break;
+    case SUMMER: cout << "Лето, средняя температура +25°C\n"; break;
+    case AUTUMN: cout << "Осень, средняя температура +5°C\n"; break;
+    default: cout << "Ошибка: неверный номер сезона\n"; break;
+    }
+    return 0;
+}
