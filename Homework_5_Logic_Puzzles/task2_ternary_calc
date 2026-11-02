@@ -1,0 +1,28 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int a, b, c;
+    cout << "Введите три целых числа: ";
+    cin >> a >> b >> c;
+
+    // Только тернарные операторы, никаких if!
+    int max_val = (a > b && a > c) ? a : ((b > c) ? b : c);
+    
+    // Сумма только положительных чисел
+    int sum_pos = (a > 0 ? a : 0) + (b > 0 ? b : 0) + (c > 0 ? c : 0);
+    
+    // Флаг равностороннего треугольника (все стороны > 0 и равны)
+    int is_equilateral = (a > 0 && b > 0 && c > 0 && a == b && b == c) ? 1 : 0;
+
+    cout << "Максимум: " << max_val << "\n";
+    cout << "Сумма положительных: " << sum_pos << "\n";
+    cout << "Флаг равностороннего треугольника: " << is_equilateral << "\n";
+
+    return 0;
+}
