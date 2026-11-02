@@ -1,0 +1,28 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int level;
+    cout << "Введите уровень дня (1-10): ";
+    cin >> level;
+
+    // Проверка диапазона одним условием с &&
+    if (level >= 1 && level <= 3) {
+        cout << "Держись, всё наладится\n";
+    }
+    else if (level >= 4 && level <= 6) {
+        cout << "Нормальный день\n";
+    }
+    else if (level >= 7 && level <= 10) {
+        cout << "Отличный день!\n";
+    }
+    else {
+        cout << "Такого уровня не существует\n";
+    }
+    return 0;
+}
