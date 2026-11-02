@@ -1,0 +1,23 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+#include <cctype> // Для tolower
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    char ch;
+    cout << "Введите цвет светофора (r, y, g): ";
+    cin >> ch;
+
+    // Используем tolower для обработки и заглавных букв
+    switch (tolower(ch)) {
+    case 'r': cout << "Стоп\n"; break;
+    case 'y': cout << "Приготовиться\n"; break;
+    case 'g': cout << "Можно ехать\n"; break;
+    default:  cout << "Ошибка: неизвестный цвет\n"; break;
+    }
+    return 0;
+}
