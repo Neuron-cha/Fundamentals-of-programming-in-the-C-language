@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    string command;
+    bool logic_inverted = false;
+
+    cout << "Загадано действие: 'включить свет'.\n";
+    cout << "Введите команду ('включить' / 'выключить' / 'инвертировать логику'):\n";
+
+    while (true) {
+        cout << "> ";
+        cin >> command;
+
+        if (command == "инвертировать логику" || command == "инвертировать") {
+            logic_inverted = !logic_inverted;
+            cout << "[Логика инвертирована. Теперь флаг: " << (logic_inverted ? "ИСТИНА" : "ЛОЖЬ") << "]\n";
+            continue;
+        }
+
+        // Сломанная логика
+        if (!logic_inverted) {
+            // Если логика нормальная (не инвертирована): действуем, если написали ПРОТИВОПОЛОЖНОЕ
+            if (command == "выключить") {
+                cout << "Действие ВЫПОЛНЕНО: Свет включен!\n";
+            } else if (command == "включить") {
+                cout << "Действие ПРОИГНОРИРОВАНО: Вы написали то же самое.\n";
+            } else {
+                cout << "Неизвестная команда.\n";
+            }
+        } else {
+            // Если логика инвертирована: действуем, если написали ТО ЖЕ САМОЕ
+            if (command == "включить") {
+                cout << "Действие ВЫПОЛНЕНО (инверсия): Свет включен!\n";
+            } else if (command == "выключить") {
+                cout << "Действие ПРОИГНОРИРОВАНО (инверсия): Вы написали противоположное.\n";
+            } else {
+                cout << "Неизвестная команда.\n";
+            }
+        }
+    }
+    return 0;
+}
