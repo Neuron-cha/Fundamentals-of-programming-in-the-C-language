@@ -1,0 +1,29 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    char player;
+    char comp = 'к'; // Компьютер всегда выбирает камень
+
+    cout << "Игрок, введите ход (к - камень, н - ножницы, б - бумага): ";
+    cin >> player;
+
+    if (player == comp) {
+        cout << "Ничья\n";
+    }
+    else if (player == 'б') {
+        cout << "Вы победили (бумага бьет камень)\n";
+    }
+    else if (player == 'н') {
+        cout << "Вы проиграли (камень бьет ножницы)\n";
+    }
+    else {
+        cout << "Неизвестный ход!\n";
+    }
+    return 0;
+}
