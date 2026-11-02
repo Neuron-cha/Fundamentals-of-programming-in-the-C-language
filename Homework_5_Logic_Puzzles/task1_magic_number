@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    string question;
+    const int magic = 42;
+    cout << "Загадано число. Задавайте вопросы (например: 'делится на 3?', 'больше 50?', 'это 42?')\n";
+
+    while (true) {
+        cout << "> ";
+        getline(cin, question);
+
+        if (question.find("42") != string::npos) {
+            cout << "Да! Вы угадали магическое число!\n";
+            break;
+        } else if (question.find("делится на 3") != string::npos) {
+            cout << (magic % 3 == 0 ? "Да\n" : "Нет\n");
+        } else if (question.find("делится на 2") != string::npos) {
+            cout << (magic % 2 == 0 ? "Да\n" : "Нет\n");
+        } else if (question.find("больше 50") != string::npos) {
+            cout << (magic > 50 ? "Да\n" : "Нет\n");
+        } else if (question.find("меньше 20") != string::npos) {
+            cout << (magic < 20 ? "Да\n" : "Нет\n");
+        } else if (question.find("четное") != string::npos) {
+            cout << (magic % 2 == 0 ? "Да\n" : "Нет\n");
+        } else {
+            cout << "Я не понимаю вопрос. Попробуйте спросить иначе.\n";
+        }
+    }
+    return 0;
+}
