@@ -1,0 +1,27 @@
+#include <iostream>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+enum OrderStatus { NEW, PAID, SHIPPED, DELIVERED, CANCELLED };
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    int input;
+    cout << "Введите статус заказа (0 - NEW, 1 - PAID, 2 - SHIPPED, 3 - DELIVERED, 4 - CANCELLED): ";
+    cin >> input;
+
+    OrderStatus status = static_cast<OrderStatus>(input);
+
+    switch (status) {
+    case NEW:       cout << "Заказ создан. Ожидается оплата.\n"; break;
+    case PAID:      cout << "Оплачен. Готовится к отправке.\n"; break;
+    case SHIPPED:   cout << "Отправлен. Ожидайте доставку.\n"; break;
+    case DELIVERED: cout << "Доставлен. Спасибо за покупку!\n"; break;
+    case CANCELLED: cout << "Отменён. Обратитесь в поддержку.\n"; break;
+    default:        cout << "Ошибка: неизвестный статус\n"; break;
+    }
+    return 0;
+}
