@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <clocale>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+    string color;
+    cout << "Введите цвет светофора (red, yellow, green): ";
+    cin >> color;
+
+    // Проверяем первый символ в нижнем регистре (как делают парсеры)
+    switch (tolower(color[0])) {
+    case 'r': cout << "Стоп\n"; break;
+    case 'y': cout << "Приготовься!\n"; break;
+    case 'g': cout << "Можно идти\n"; break;
+    default: cout << "Не знаю такого цвета\n"; break;
+    }
+    return 0;
+}
