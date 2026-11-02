@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num;
+    cout << ": ";
+    cin >> num;
+
+    cout << ": ";
+    for (; num > 0; num /= 10) {
+        cout << num % 10;
+    }
+    cout << "\n";
+
+    return 0;
+}
